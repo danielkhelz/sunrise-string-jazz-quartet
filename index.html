@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="description" content="Sunrise String Jazz Quartet — quartetto d'archi jazz dal Conservatorio Verdi di Milano. Album Jazz Landscapes (2025), composizioni di Pino Jodice.">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta name="color-scheme" content="dark light">
+  <meta property="og:title" content="Sunrise String Jazz Quartet">
+  <meta property="og:description" content="Jazz contemporaneo per archi. Album Jazz Landscapes — disponibile ora.">
+  <meta property="og:image" content="assets/gallery/quartetto-live.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Sunrise String Jazz Quartet",
+    "url": "https://sunrise-string-jazz-quartet.vercel.app",
+    "image": "assets/gallery/quartetto-live.webp",
+    "genre": "Jazz",
+    "email": "sunrise.string.jazz.quartet@outlook.it",
+    "sameAs": [
+      "https://www.instagram.com/sunrise_string_jazz_quartet/",
+      "https://youtube.com/@SunriseStringJazzQuartet",
+      "https://open.spotify.com/artist/4T9LvntMa8cS1iA886r43B"
+    ],
+    "album": {
+      "@type": "MusicAlbum",
+      "name": "Jazz Landscapes",
+      "datePublished": "2025-01-28"
+    }
+  }
+  </script>
+  <meta property="og:type" content="website">
+  <title>Sunrise String Jazz Quartet</title>
+  <link rel="icon" href="assets/logo-brand.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="#home" class="skip-link">Vai al contenuto</a>
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#home" class="nav__logo">
+        <img src="assets/logo-brand.jpg" alt="Sunrise String Jazz Quartet" class="nav__logo-img">
+      </a>
+      <button type="button" class="nav__toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#about">Il Quartetto</a></li>
+        <li><a href="#album">Album</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#concerts">Concerti</a></li>
+        <li><a href="#music">Ascolta</a></li>
+        <li><a href="#contact">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero__bg">
+        <img src="assets/gallery/cremona.jpg" alt="" class="hero__bg-img" loading="eager" fetchpriority="high">
+      </div>
+      <div class="hero__wave" aria-hidden="true">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z" fill="currentColor" opacity="0.06"/></svg>
+      </div>
+      <div class="hero__layout container">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Quartetto d'archi jazz</p>
+          <h1 class="hero__title">Sunrise String<br><span>Jazz Quartet</span></h1>
+          <p class="hero__subtitle">Repertorio Border Line tra classico, jazz e pop — quattro archi dal Conservatorio G. Verdi di Milano, con arrangiamenti di Pino Jodice.</p>
+          <div class="hero__cta">
+            <a href="#album" class="btn btn--primary">Ascolta Jazz Landscapes</a>
+            <a href="#concerts" class="btn btn--ghost btn--light">Prossimi concerti</a>
+          </div>
+          <div class="hero__badge">
+            <span class="hero__badge-dot"></span>
+            Out Now — 8 brani · Jazz Landscapes 2025
+          </div>
+          <a href="#concerts" class="hero__upcoming" id="hero-upcoming" hidden>
+            <span class="hero__upcoming-label">Prossimo concerto</span>
+            <span class="hero__upcoming-text" id="hero-upcoming-text"></span>
+          </a>
+        </div>
+        <div class="hero__album">
+          <div class="hero__vinyl">
+            <img src="assets/album-cover.jpg" alt="Copertina Jazz Landscapes" class="hero__album-cover" loading="eager">
+          </div>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scorri</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+    </section>
+
+    <section class="about section section--cream" id="about">
+      <div class="container about__grid">
+        <div class="about__visual reveal">
+          <img src="assets/gallery/quartetto-live.webp" alt="Sunrise String Jazz Quartet in concerto dal vivo" class="about__img" loading="lazy" width="800" height="533">
+          <span class="about__accent" aria-hidden="true"></span>
+          <p class="about__photo-credit">Foto: Riccardo Giorgia</p>
+        </div>
+        <div class="about__text">
+          <span class="section__label">Il Quartetto</span>
+          <h2 class="section__title">Quattro archi, un'unica voce jazz</h2>
+          <p>Fondato il <strong>26 gennaio 2023</strong> da <strong>Anna Glibchuk</strong>, il Sunrise String Jazz Quartet riunisce quattro musicisti formati al <strong>Conservatorio G. Verdi di Milano</strong> in un ensemble d'archi dedicato a un repertorio <em>Border Line</em> tra musica colta, jazz, pop e colonne sonore, con l'affiatamento maturato in concerti, registrazioni e progetti con <strong>Pino Jodice</strong>.</p>
+          <p class="about__credit">Composizioni e arrangiamenti: <strong>Pino Jodice</strong></p>
+          <a href="press-kit.html" class="btn btn--ghost about__press-btn" target="_blank" rel="noopener noreferrer">Scarica press kit</a>
+        </div>
+      </div>
+
+      <div class="members container reveal">
+        <details class="member-card" id="member-anna">
+          <summary class="member-card__head" aria-label="Anna Glibchuk — apri biografia">
+            <span class="member-card__instrument">1° violino · fondatrice e leader</span>
+            <span class="member-card__name">Anna Glibchuk</span>
+            <span class="member-card__hint">Biografia</span>
+          </summary>
+          <div class="member-card__body">
+            <p>Violinista, nata nel 1992 in Ucraina, si è diplomata al Conservatorio «G. Verdi» di Milano sotto la guida del M° Silvio Moscatelli. È spalla della Verdi Jazz Orchestra Ritmico Sinfonica e dell'Opera Symphony Orchestra; ha suonato con MozzOrchestra, Orchestra Filarmonica Europea, Orchestra Sinfonica di Sanremo, MYO Mondaino, OSCOM e altre formazioni.</p>
+            <p>Ha collaborato con Dave Weckl, Antonio Faraò, Fabrizio Bosso, Simona Bencini, Nico Gori, David Blamires, Simona Molinari, Sighanda, Stevie Biondi e Pino Jodice. Fondatrice del Sunrise String Jazz Quartet, ha pubblicato il CD <em>Jazz Landscapes</em> nel 2025.</p>
+          </div>
+        </details>
+        <details class="member-card" id="member-marcello">
+          <summary class="member-card__head" aria-label="Marcello Maria Pozzi — apri biografia">
+            <span class="member-card__instrument">2° violino</span>
+            <span class="member-card__name">Marcello Maria Pozzi</span>
+            <span class="member-card__hint">Biografia</span>
+          </summary>
+          <div class="member-card__body">
+            <p>Laureato col massimo dei voti al Triennio del Conservatorio «G. Verdi» di Milano, ha partecipato a diverse iniziative proposte dalla Regione Lombardia. Si è esibito con artisti di calibro internazionale come David Blamires, Nico Gori, Simona Bencini, Flavio Boltro e altri.</p>
+            <p>Dal 2025 è violinista del Sunrise String Jazz Quartet, con cui promuove <em>Jazz Landscapes</em> e l'attività concertistica del gruppo.</p>
+          </div>
+        </details>
+        <details class="member-card" id="member-daniel">
+          <summary class="member-card__head" aria-label="Daniel Calzone — apri biografia">
+            <span class="member-card__instrument">Viola</span>
+            <span class="member-card__name">Daniel Calzone</span>
+            <span class="member-card__hint">Biografia</span>
+          </summary>
+          <div class="member-card__body">
+            <p>Violista in orchestre come ICM Milano (2012–2014), FuturOrchestra (2014–2016), Conservatorio G. Verdi (dal 2016), GD Major (2018), Monferrato Classic (2021), Abbazia Jazz Festival — Prima Viola (2023, con David Weckl e Antonio Faraò), Verdi Jazz Orchestra — Prima Viola (dal 2020) e Mondaino Youth — Prima Viola (2023, con Stevie Biondi).</p>
+            <p>Tra le collaborazioni in quartetto: Davide Cabiddu's Quartet (album <em>Nutopia</em>, 2022–2023) e Sunrise String Jazz Quartet, attivo con Cinzia Tedesco e Pino Jodice in concerti come <em>Mister Puccini in Jazz</em> (5 novembre 2024, Roma) e <em>Jazz Landscapes</em> (8 agosto 2025, Lerici). Ha partecipato al tour <em>Michael — The Show</em> (dicembre 2024) ed è violista presso l'Orchestra Filarmonica della Franciacorta (2025, tour europeo de <em>Il Volo</em>).</p>
+          </div>
+        </details>
+        <details class="member-card" id="member-nicholas">
+          <summary class="member-card__head" aria-label="Nicholas Stellati — apri biografia">
+            <span class="member-card__instrument">Violoncello</span>
+            <span class="member-card__name">Nicholas Stellati</span>
+            <span class="member-card__hint">Biografia</span>
+          </summary>
+          <div class="member-card__body">
+            <p>Violoncellista, si è laureato con il massimo dei voti presso il Conservatorio «G. Verdi» di Milano sotto la guida della professoressa Nicoletta Mainardi. È primo violoncello della Verdi Jazz Orchestra, conseguentemente ad audizione.</p>
+            <p>Ha partecipato a importanti produzioni con artisti internazionali quali David Blamires, Flavio Boltro, Gianluca Petrella, Simona Bencini, Nico Gori, Stevie Biondi, Cinzia Tedesco e Pino Jodice.</p>
+            <p>Fa parte del Sunrise String Jazz Quartet, con il quale ha pubblicato un disco uscito il 26 gennaio 2025 con musiche del Maestro Pino Jodice, e con cui suona in importanti occasioni come il G8 a Roma presso l'Auditorium Parco della Musica Ennio Morricone e nella Basilica di San Petronio a Bologna.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="live-highlights container">
+        <h3 class="live-highlights__title">Attività live</h3>
+        <p class="live-highlights__intro">Dal 2023 al 2025 il quartetto ha portato il suo repertorio Border Line nei principali teatri e festival italiani, in collaborazione continuativa con Pino Jodice.</p>
+        <div class="venue-badges" aria-label="Teatri e festival">
+          <span class="venue-badge">Auditorium Parco della Musica Ennio Morricone — Roma (G8)</span>
+          <span class="venue-badge">Basilica di San Petronio — Bologna</span>
+          <span class="venue-badge">Cremona Musica &amp; Mondomusica</span>
+          <span class="venue-badge">Festival Abbazie Jazz</span>
+          <span class="venue-badge">Palazzo Cigola Martinoni — Cigole (BS)</span>
+          <span class="venue-badge">Radio Vaticana</span>
+        </div>
+        <ul class="live-highlights__venues">
+          <li><em>Mister Puccini in Jazz</em> — Roma (2024)</li>
+          <li><em>Jazz Landscapes</em> — Lerici (2025)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="album section section--dark" id="album">
+      <div class="container album__grid">
+        <div class="album__cover-wrap reveal">
+          <div class="album__vinyl">
+            <img src="assets/album-cover.jpg" alt="Copertina Jazz Landscapes" class="album__cover" loading="lazy">
+          </div>
+        </div>
+        <div class="album__info">
+          <span class="section__label">Primo album ufficiale</span>
+          <h2 class="section__title">Jazz Landscapes</h2>
+          <ul class="album__meta">
+            <li><strong>Data:</strong> 28 gennaio 2025</li>
+            <li><strong>Brani:</strong> 8 tracce · 46 minuti</li>
+            <li><strong>Genere:</strong> Strumentale · Jazz</li>
+            <li><strong>Label:</strong> Telecinesound</li>
+            <li><strong>Registrazione:</strong> Abbey Rocchi Studio, Roma</li>
+          </ul>
+          <p>Primo album ufficiale del quartetto: otto tracce composte e arrangiate interamente da Pino Jodice. Un viaggio tra composizioni originali — <em>Melodia Infinita</em>, <em>Cantico</em>, <em>Midea(s)Tension</em>, <em>Ethernal Child</em> — e riletture di Morricone, Bee Gees, Michael Jackson e un medley pop su Sting.</p>
+          <a href="https://open.spotify.com/album/5r6zYVWxDqFrTzCkR0VwnN" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Ascolta su Spotify</a>
+        </div>
+      </div>
+
+      <div class="container album__player-wrap reveal">
+        <h3 class="album__player-title">Ascolta in anteprima</h3>
+        <div class="album__player">
+          <iframe
+            src="https://open.spotify.com/embed/album/5r6zYVWxDqFrTzCkR0VwnN?utm_source=generator&theme=0"
+            title="Jazz Landscapes — Sunrise String Jazz Quartet su Spotify"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="tracklist container reveal">
+        <h3 class="tracklist__title">Tracklist</h3>
+        <ol class="tracklist__list">
+          <li><span class="track__num">01</span><span class="track__name">Suite for Sting — Medley: Shape of My Heart / Fragile / Englishman in New York</span><span class="track__note">Sting</span></li>
+          <li><span class="track__num">02</span><span class="track__name">Death Theme</span><span class="track__note">Ennio Morricone</span></li>
+          <li><span class="track__num">03</span><span class="track__name">Melodia Infinita</span><span class="track__note">Pino Jodice</span></li>
+          <li><span class="track__num">04</span><span class="track__name">Midea(s)Tension</span><span class="track__note">Pino Jodice</span></li>
+          <li><span class="track__num">05</span><span class="track__name">Cantico</span><span class="track__note">Pino Jodice</span></li>
+          <li><span class="track__num">06</span><span class="track__name">How Deep Is Your Love</span><span class="track__note">Bee Gees</span></li>
+          <li><span class="track__num">07</span><span class="track__name">Human Nature</span><span class="track__note">Michael Jackson e Steve Porcaro</span></li>
+          <li><span class="track__num">08</span><span class="track__name">Ethernal Child</span><span class="track__note">Pino Jodice</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="video section" id="video">
+      <div class="container">
+        <span class="section__label">Video</span>
+        <h2 class="section__title">Guarda e ascolta</h2>
+        <p class="section__intro">I video ufficiali sono solo qui — dal canale YouTube del quartetto.</p>
+
+        <div class="video__featured reveal">
+          <div class="video__player" data-video="GnKa-6p5Xq0" data-title="Melodia Infinita — Sunrise String Jazz Quartet (Official Video)"></div>
+          <div class="video__featured-info">
+            <h3>Melodia Infinita</h3>
+            <p>Video ufficiale tratto dall'album <em>Jazz Landscapes</em>. Composizione di Pino Jodice, girato al Palazzo Cigola Martinoni a Cigole (BS).</p>
+            <a href="https://www.youtube.com/watch?v=GnKa-6p5Xq0" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Guarda su YouTube</a>
+          </div>
+        </div>
+
+        <div class="video__more">
+          <h3 class="video__more-title">Altri video</h3>
+          <div class="video__grid">
+            <article class="video-card">
+              <div class="video__player" data-video="kzEuSb2AV80" data-title="Live @ Lerici — Jazz Landscapes"></div>
+              <div class="video-card__info">
+                <h4>Live @ Lerici (08/08/2025)</h4>
+                <a href="https://www.youtube.com/watch?v=kzEuSb2AV80" class="video-card__link" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="concerts section" id="concerts">
+      <div class="container">
+        <span class="section__label">Live</span>
+        <h2 class="section__title">Date concerti</h2>
+        <p class="section__intro">Scopri dove ascoltare il quartetto dal vivo. Le prossime date vengono aggiornate su Instagram.</p>
+
+        <div class="concerts__block">
+          <h3 class="concerts__subtitle concerts__subtitle--upcoming">Prossime date</h3>
+          <div class="concerts__list concerts__list--scroll" id="concerts-upcoming"></div>
+          <div class="concerts__empty" id="concerts-empty">
+            <p>Nuove date in programmazione.</p>
+            <a href="https://www.instagram.com/sunrise_string_jazz_quartet/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Segui gli aggiornamenti</a>
+          </div>
+        </div>
+
+        <div class="concerts__block">
+          <h3 class="concerts__subtitle">Concerti recenti</h3>
+          <div class="concerts__list" id="concerts-past">
+            <article class="concert-card" data-date="2025-08-08">
+              <div class="concert-card__date">
+                <span class="concert-card__day">08</span>
+                <span class="concert-card__month">Ago</span>
+                <span class="concert-card__year">2025</span>
+              </div>
+              <div class="concert-card__body">
+                <h4 class="concert-card__title">Jazz Landscapes</h4>
+                <p class="concert-card__venue">Concerto dal vivo</p>
+                <p class="concert-card__location">Lerici (SP)</p>
+                <ul class="concert-card__meta">
+                  <li>Repertorio dall'album <em>Jazz Landscapes</em></li>
+                  <li>Sunrise String Jazz Quartet</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="concert-card" data-date="2024-11-05">
+              <div class="concert-card__date">
+                <span class="concert-card__day">05</span>
+                <span class="concert-card__month">Nov</span>
+                <span class="concert-card__year">2024</span>
+              </div>
+              <div class="concert-card__body">
+                <h4 class="concert-card__title">Mister Puccini in Jazz</h4>
+                <p class="concert-card__venue">Con Cinzia Tedesco e Pino Jodice</p>
+                <p class="concert-card__location">Roma</p>
+                <ul class="concert-card__meta">
+                  <li>Sunrise String Jazz Quartet</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="concert-card" data-date="2025-01-16">
+              <div class="concert-card__date">
+                <span class="concert-card__day">16</span>
+                <span class="concert-card__month">Gen</span>
+                <span class="concert-card__year">2025</span>
+              </div>
+              <div class="concert-card__body">
+                <h4 class="concert-card__title">Presentazione album — Radio Vaticana</h4>
+                <p class="concert-card__venue">Radio Vaticana · Piazza Pia</p>
+                <p class="concert-card__location">Città del Vaticano</p>
+                <ul class="concert-card__meta">
+                  <li>Presentazione di <em>Jazz Landscapes</em></li>
+                  <li>Intervista e ascolti dal vivo</li>
+                </ul>
+                <a href="https://www.vaticannews.va/it/podcast/radio-vaticana-musica/zoom/2025/01/zoom-16-01-2025.html" class="concert-card__link" target="_blank" rel="noopener noreferrer">Ascolta su Vatican News</a>
+              </div>
+            </article>
+
+
+
+            <article class="concert-card" data-date="2024-10-05">
+              <div class="concert-card__date">
+                <span class="concert-card__day">05</span>
+                <span class="concert-card__month">Ott</span>
+                <span class="concert-card__year">2024</span>
+              </div>
+              <div class="concert-card__body">
+                <h4 class="concert-card__title">Cremona Musica</h4>
+                <p class="concert-card__venue">Stand 177 — Fiera Cremona Musica</p>
+                <p class="concert-card__location">Cremona (CR)</p>
+                <ul class="concert-card__meta">
+                  <li>Ore 15:30</li>
+                  <li>Presentazione del CD <em>Jazz Landscapes</em></li>
+                  <li>Quartetto dei Maestri liutai Edrev — ANLAI</li>
+                </ul>
+                <a href="https://www.instagram.com/p/DAYRWfZgbWF/" class="concert-card__link" target="_blank" rel="noopener noreferrer">Post Instagram</a>
+              </div>
+            </article>
+
+            <article class="concert-card" data-date="2024-10-12">
+              <div class="concert-card__date">
+                <span class="concert-card__day">12</span>
+                <span class="concert-card__month">Ott</span>
+                <span class="concert-card__year">2024</span>
+              </div>
+              <div class="concert-card__body">
+                <h4 class="concert-card__title">Cremona Mondomusica</h4>
+                <p class="concert-card__venue">Stand Larsen Strings — Hall 2, booth 251</p>
+                <p class="concert-card__location">Cremona (CR)</p>
+                <ul class="concert-card__meta">
+                  <li>Performance live del quartetto</li>
+                  <li>Salon internazionale degli strumenti musicali</li>
+                </ul>
+                <a href="https://www.instagram.com/sunrise_string_jazz_quartet/" class="concert-card__link" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </div>
+            </article>
+
+            <article class="concert-card" data-date="2023-12-28">
+              <div class="concert-card__date">
+                <span class="concert-card__day">28</span>
+                <span class="concert-card__month">Dic</span>
+                <span class="concert-card__year">2023</span>
+              </div>
+              <div class="concert-card__body">
+                <h4 class="concert-card__title">Concerto con ospiti</h4>
+                <p class="concert-card__venue">Live con Simona Bencini e Stivie Biondi</p>
+                <p class="concert-card__location">Italia</p>
+                <ul class="concert-card__meta">
+                  <li>Repertorio jazz e contaminazioni vocali</li>
+                </ul>
+                <a href="https://www.instagram.com/p/C1WqqMjo2cA/" class="concert-card__link" target="_blank" rel="noopener noreferrer">Post Instagram</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="concerts__booking">
+          <p>Per richieste di booking, festival e eventi privati:</p>
+          <div class="concerts__booking-cta">
+            <a href="https://www.instagram.com/sunrise_string_jazz_quartet/" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="mailto:sunrise.string.jazz.quartet@outlook.it" class="btn btn--ghost">Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="music section" id="music">
+      <div class="container">
+        <span class="section__label">Streaming</span>
+        <h2 class="section__title">Ascolta ovunque</h2>
+        <p class="section__intro">Jazz Landscapes è disponibile su tutte le principali piattaforme musicali.</p>
+        <div class="platforms">
+          <a href="https://open.spotify.com/artist/4T9LvntMa8cS1iA886r43B" class="platform-card platform-card--spotify" target="_blank" rel="noopener noreferrer">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            </span>
+            <span class="platform-card__info">
+              <span class="platform-card__name">Spotify</span>
+              <span class="platform-card__action">Ascolta <span aria-hidden="true">→</span></span>
+            </span>
+          </a>
+          <a href="https://music.apple.com/it/album/jazz-landscapes/1792323930" class="platform-card platform-card--apple" target="_blank" rel="noopener noreferrer">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a12.5 12.5 0 001.57-.1c.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 001.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 011.038-2.022c.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.904.904 0 00.02-.193c0-1.815 0-3.63-.002-5.443a.725.725 0 00-.026-.185c-.04-.15-.15-.243-.304-.234-.16.01-.318.035-.475.066-.76.15-1.52.303-2.28.456l-2.325.47-1.374.278c-.016.003-.032.01-.048.013-.277.077-.377.203-.39.49-.002.042 0 .086 0 .13-.002 2.602 0 5.204-.003 7.805 0 .42-.047.836-.215 1.227-.278.64-.77 1.04-1.434 1.233-.35.1-.71.16-1.075.172-.96.036-1.755-.6-1.92-1.544-.14-.812.23-1.685 1.154-2.075.357-.15.73-.232 1.108-.31.287-.06.575-.116.86-.177.383-.083.583-.323.6-.714v-.15c0-2.96 0-5.922.002-8.882 0-.123.013-.25.042-.37.07-.285.273-.448.546-.518.255-.066.515-.112.774-.165.733-.15 1.466-.296 2.2-.444l2.27-.46c.67-.134 1.34-.27 2.01-.403.22-.043.442-.088.663-.106.31-.025.523.17.554.482.008.073.012.148.012.223.002 1.91.002 3.822 0 5.732z"/></svg>
+            </span>
+            <span class="platform-card__info">
+              <span class="platform-card__name">Apple Music</span>
+              <span class="platform-card__action">Ascolta <span aria-hidden="true">→</span></span>
+            </span>
+          </a>
+          <a href="https://music.amazon.it/albums/B0DTW691G4" class="platform-card platform-card--amazon" target="_blank" rel="noopener noreferrer">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M13.958 18.442c-1.354.103-2.702.156-4.042.156-1.34 0-2.688-.053-4.042-.156-.36-.028-.6-.36-.572-.72.028-.36.36-.6.72-.572 1.32.096 2.652.144 3.894.144 1.242 0 2.574-.048 3.894-.144.36-.028.692.212.72.572.028.36-.212.692-.572.72zM11.998 0C5.373 0 0 5.373 0 12s5.373 12 11.998 12C18.627 24 24 18.627 24 12S18.627 0 11.998 0zm6.626 16.584c-.12.48-.576.768-1.056.648-2.784-.696-5.88-.696-8.664 0-.48.12-.936-.168-1.056-.648-.12-.48.168-.936.648-1.056 3.12-.78 6.576-.78 9.696 0 .48.12.768.576.648 1.056-.12.48-.576.768-1.056.648z"/></svg>
+            </span>
+            <span class="platform-card__info">
+              <span class="platform-card__name">Amazon Music</span>
+              <span class="platform-card__action">Ascolta <span aria-hidden="true">→</span></span>
+            </span>
+          </a>
+          <a href="https://youtube.com/@SunriseStringJazzQuartet" class="platform-card platform-card--youtube" target="_blank" rel="noopener noreferrer">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </span>
+            <span class="platform-card__info">
+              <span class="platform-card__name">YouTube</span>
+              <span class="platform-card__action">Guarda <span aria-hidden="true">→</span></span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section section--dark" id="contact">
+      <div class="container contact__inner">
+        <span class="section__label">Contatti</span>
+        <h2 class="section__title">Booking e collaborazioni</h2>
+        <p class="contact__intro">Il Sunrise String Jazz Quartet è disponibile per concerti, festival, eventi istituzionali e serate private. Per proposte, date e materiale stampa, contattaci ai recapiti ufficiali.</p>
+
+        <form class="contact__form" action="https://formsubmit.co/sunrise.string.jazz.quartet@outlook.it" method="POST">
+          <input type="hidden" name="_subject" value="Richiesta booking — Sunrise String Jazz Quartet">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://sunrise-string-jazz-quartet.vercel.app/?inviato=1#contact">
+          <input type="text" name="_honey" class="contact__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="contact__form-grid">
+            <label class="contact__field">
+              <span class="contact__field-label">Nome e cognome</span>
+              <input type="text" name="nome" required autocomplete="name" placeholder="Il tuo nome">
+            </label>
+            <label class="contact__field">
+              <span class="contact__field-label">Email</span>
+              <input type="email" name="email" required autocomplete="email" placeholder="nome@esempio.it">
+            </label>
+            <label class="contact__field">
+              <span class="contact__field-label">Tipo di evento</span>
+              <select name="evento" required>
+                <option value="" disabled selected>Seleziona</option>
+                <option value="Concerto / Festival">Concerto / Festival</option>
+                <option value="Evento privato">Evento privato</option>
+                <option value="Evento istituzionale">Evento istituzionale</option>
+                <option value="Stampa / Media">Stampa / Media</option>
+                <option value="Altro">Altro</option>
+              </select>
+            </label>
+            <label class="contact__field">
+              <span class="contact__field-label">Data prevista</span>
+              <input type="text" name="data" placeholder="Es. 15 marzo 2026">
+            </label>
+            <label class="contact__field contact__field--full">
+              <span class="contact__field-label">Messaggio</span>
+              <textarea name="messaggio" rows="5" required placeholder="Descrivi l'evento, la location e le tue esigenze"></textarea>
+            </label>
+          </div>
+          <div class="contact__form-actions">
+            <button type="submit" class="btn btn--primary">Invia richiesta</button>
+            <a href="press-kit.html" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Press kit</a>
+          </div>
+        </form>
+
+        <div class="contact__card">
+          <div class="contact__channel">
+            <span class="contact__channel-label">Email ufficiale</span>
+            <a href="mailto:sunrise.string.jazz.quartet@outlook.it" class="contact__channel-value">sunrise.string.jazz.quartet@outlook.it</a>
+          </div>
+          <div class="contact__actions">
+            <a href="https://www.instagram.com/sunrise_string_jazz_quartet/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+
+        <div class="contact__social">
+          <p class="contact__social-label">Seguici sui canali ufficiali</p>
+          <div class="social">
+            <a href="https://www.instagram.com/sunrise_string_jazz_quartet/" class="social__link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://youtube.com/@SunriseStringJazzQuartet" class="social__link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer--dark">
+    <div class="container footer__inner">
+      <p>&copy; <span id="year"></span> Sunrise String Jazz Quartet. Tutti i diritti riservati.</p>
+      <p class="footer__label">℗ 2025 Telecinesound · <a href="press-kit.html">Press kit</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
