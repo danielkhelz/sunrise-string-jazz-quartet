@@ -960,6 +960,8 @@ section[id] {
 }
 
 .album__player {
+  width: 100%;
+  min-width: 0;
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -969,6 +971,7 @@ section[id] {
 .album__player iframe {
   display: block;
   width: 100%;
+  height: 352px;
   min-height: 352px;
   border: 0;
 }
@@ -2284,8 +2287,20 @@ section[id] {
     hyphens: auto;
   }
 
+  .album__player-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .album__player-title {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 1.15rem;
+  }
+
   .album__player iframe {
-    min-height: 280px;
+    height: 452px;
+    min-height: 452px;
   }
 
   .venue-badge {
@@ -2362,6 +2377,11 @@ section[id] {
 /* Responsive — small phones */
 @media (max-width: 480px) {
   :root { --section-pad: clamp(2.5rem, 6vw, 3.5rem); }
+
+  .album__player iframe {
+    height: 480px;
+    min-height: 480px;
+  }
 
   .members { grid-template-columns: 1fr; gap: 0.85rem; }
 
