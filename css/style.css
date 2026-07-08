@@ -1333,6 +1333,24 @@ section[id] {
   gap: 1rem;
 }
 
+#concerts-upcoming {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+}
+
+#concerts-upcoming:empty {
+  display: none;
+}
+
+#concerts-upcoming .concert-card {
+  height: 100%;
+  min-width: 0;
+  align-content: start;
+}
+
 .concerts__empty {
   display: none;
   flex-direction: column;
@@ -1424,12 +1442,17 @@ section[id] {
   overflow-wrap: break-word;
 }
 
-.concert-card__venue { font-weight: 500; margin-bottom: 0.15rem; }
+.concert-card__venue {
+  font-weight: 500;
+  margin-bottom: 0.15rem;
+  overflow-wrap: break-word;
+}
 
 .concert-card__location {
   font-size: 0.875rem;
   color: var(--text-muted);
   margin-bottom: 0.75rem;
+  overflow-wrap: break-word;
 }
 
 .concert-card__meta { list-style: none; margin-bottom: 0.85rem; }
@@ -1440,6 +1463,7 @@ section[id] {
   padding: 0.2rem 0;
   padding-left: 1rem;
   position: relative;
+  overflow-wrap: break-word;
 }
 
 .concert-card__meta li::before {
@@ -2041,14 +2065,16 @@ section[id] {
 
   .video__featured { align-items: stretch; }
 
+  #concerts-upcoming,
   #concerts-past {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.15rem;
   }
 
+  #concerts-upcoming .concert-card,
   #concerts-past .concert-card {
-    grid-template-columns: 84px 1fr;
+    grid-template-columns: 84px minmax(0, 1fr);
     height: 100%;
   }
 
@@ -2064,6 +2090,7 @@ section[id] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  #concerts-upcoming,
   #concerts-past {
     grid-template-columns: 1fr;
   }
@@ -2396,35 +2423,10 @@ section[id] {
 
   .members { gap: 0.85rem; }
 
-  .concerts__list--scroll {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding: 0.25rem 0 0.85rem;
-    margin-inline: calc(var(--gutter) * -1);
-    padding-inline: var(--gutter);
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent) transparent;
+  #concerts-upcoming {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
   }
-
-  .concerts__list--scroll::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .concerts__list--scroll::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    border-radius: 4px;
-  }
-
-  .concerts__list--scroll .concert-card {
-    flex: 0 0 min(86%, 320px);
-    scroll-snap-align: start;
-  }
-
-  .concerts__list--scroll:empty { display: none; }
 
   #concerts-past {
     display: flex;
@@ -2433,8 +2435,8 @@ section[id] {
   }
 
   .concert-card,
-  #concerts-past .concert-card,
-  .concerts__list--scroll .concert-card {
+  #concerts-upcoming .concert-card,
+  #concerts-past .concert-card {
     grid-template-columns: 76px minmax(0, 1fr);
     gap: 0.85rem;
     padding: 1.15rem;
