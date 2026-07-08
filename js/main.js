@@ -222,11 +222,49 @@ if (concertsPast && concertsUpcoming) {
 }
 
 /* Form inviato — messaggio di conferma */
-const contactSection = document.getElementById('contact');
-if (contactSection && new URLSearchParams(window.location.search).get('inviato') === '1') {
+const CONTACT_SUCCESS_MSG = 'Richiesta inviata con successo. Ti risponderemo al più presto.';
+const CONTACT_SUCCESS_DURATION = 6000;
+
+function showContactSuccess() {
+  const contactSection = document.getElementById('contact');
+  const form = contactSection?.querySelector('.contact__form');
+  if (!contactSection || !form) return;
+
+  contactSection.querySelector('.contact__form-success')?.remove();
+
   const notice = document.createElement('p');
   notice.className = 'contact__form-success';
-  notice.textContent = 'Richiesta inviata con successo. Ti risponderemo al più presto.';
-  const form = contactSection.querySelector('.contact__form');
-  if (form) form.prepend(notice);
+  notice.setAttribute('role', 'status');
+  notice.setAttribute('aria-live', 'polite');
+  notice.textContent = CONTACT_SUCCESS_MSG;
+  form.prepend(notice);
+
+  requestAnimationFrame(() => {
+    notice.classList.add('contact__form-success--visible');
+  });
+
+  if (window.location.hash !== '#contact') {
+    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  const url = new URL(window.location.href);
+  if (url.searchParams.has('inviato')) {
+    url.searchParams.delete('inviato');
+    history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+  }
+
+  window.setTimeout(() => {
+    notice.classList.remove('contact__form-success--visible');
+    notice.classList.add('contact__form-success--hidden');
+  }, CONTACT_SUCCESS_DURATION);
+
+  notice.addEventListener('transitionend', (e) => {
+    if (e.propertyName === 'opacity' && notice.classList.contains('contact__form-success--hidden')) {
+      notice.remove();
+    }
+  }, { once: true });
+}
+
+if (new URLSearchParams(window.location.search).get('inviato') === '1') {
+  showContactSuccess();
 }

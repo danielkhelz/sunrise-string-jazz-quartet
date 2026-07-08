@@ -1690,6 +1690,19 @@ section[id] {
   border-radius: var(--radius);
   color: rgba(255, 255, 255, 0.9);
   font-size: 0.92rem;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.contact__form-success--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact__form-success--hidden {
+  opacity: 0;
+  transform: translateY(-8px);
 }
 
 .contact__card {
