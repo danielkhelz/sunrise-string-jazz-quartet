@@ -783,6 +783,10 @@ section[id] {
 
 .about__visual { position: relative; }
 
+.about__img-frame {
+  position: relative;
+}
+
 .about__img {
   width: 100%;
   max-width: 100%;
