@@ -2183,7 +2183,7 @@ section[id] {
   pointer-events: none;
 }
 
-body.menu-open .ssjq-scroll-up {
+body:has(.nav__drawer[open]) .ssjq-scroll-up {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none;
@@ -2787,8 +2787,12 @@ body.menu-open .ssjq-scroll-up {
   }
 
   .album__player iframe {
-    height: 452px;
-    min-height: 452px;
+    height: 480px;
+    min-height: 480px;
+  }
+
+  .album__player--embed {
+    min-height: 480px;
   }
 
   .venue-badge {
