@@ -1048,6 +1048,42 @@ section[id] {
   margin-bottom: 1.75rem;
 }
 
+.album__subtitle {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.62);
+  margin: -0.5rem 0 1.25rem;
+}
+
+.album__movements {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.album__movement {
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+.album__movement-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+
+.album__movement p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
 .album__info-actions {
   display: flex;
   flex-wrap: wrap;
