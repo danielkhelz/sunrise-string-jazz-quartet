@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
-  <meta name="description" content="Sunrise String Jazz Quartet — quartetto d'archi jazz dal Conservatorio Verdi di Milano. Album Jazz Landscapes (2025), composizioni di Pino Jodice.">
+  <meta name="description" content="Sunrise String Jazz Quartet — quartetto d'archi jazz dal Conservatorio Verdi di Milano. In arrivo Jazz for Peace (15 gennaio 2027) con Fabrizio Bosso e ONJ. Album Jazz Landscapes (2025), composizioni di Pino Jodice.">
   <meta name="theme-color" content="#0d0d0d">
   <meta name="color-scheme" content="dark light">
   <meta property="og:title" content="Sunrise String Jazz Quartet">
-  <meta property="og:description" content="Jazz contemporaneo per archi. Album Jazz Landscapes — disponibile ora.">
+  <meta property="og:description" content="Jazz contemporaneo per archi. In arrivo Jazz for Peace — 15 gennaio 2027, con Fabrizio Bosso e ONJ.">
   <meta property="og:image" content="assets/gallery/quartetto-live.webp">
   <script type="application/ld+json">
   {
@@ -23,11 +23,20 @@
       "https://youtube.com/@SunriseStringJazzQuartet",
       "https://open.spotify.com/artist/4T9LvntMa8cS1iA886r43B"
     ],
-    "album": {
-      "@type": "MusicAlbum",
-      "name": "Jazz Landscapes",
-      "datePublished": "2025-01-28"
-    }
+    "album": [
+      {
+        "@type": "MusicAlbum",
+        "name": "Jazz for Peace",
+        "datePublished": "2027-01-15",
+        "genre": "Jazz",
+        "description": "Con Fabrizio Bosso e ONJ. Composizioni di Pino Jodice."
+      },
+      {
+        "@type": "MusicAlbum",
+        "name": "Jazz Landscapes",
+        "datePublished": "2025-01-28"
+      }
+    ]
   }
   </script>
   <meta property="og:type" content="website">
@@ -73,12 +82,15 @@
           <h1 class="hero__title">Sunrise String<br><span>Jazz Quartet</span></h1>
           <p class="hero__subtitle">Repertorio Border Line tra classico, jazz e pop — quattro archi dal Conservatorio G. Verdi di Milano, con arrangiamenti di Pino Jodice.</p>
           <div class="hero__cta">
-            <a href="#album" class="btn btn--primary">Ascolta Jazz Landscapes</a>
-            <a href="#concerts" class="btn btn--ghost btn--light">Prossimi concerti</a>
+            <a href="#album-upcoming" class="btn btn--primary">Jazz for Peace — in arrivo</a>
+            <a href="#album-landscapes" class="btn btn--ghost btn--light">Ascolta Jazz Landscapes</a>
           </div>
-          <div class="hero__badge">
+          <div class="hero__badge hero__badge--upcoming">
             <span class="hero__badge-dot"></span>
-            Out Now — 8 brani · Jazz Landscapes 2025
+            Uscita 15 gennaio 2027 · Jazz for Peace con Fabrizio Bosso e ONJ
+          </div>
+          <div class="hero__badge hero__badge--secondary">
+            Out Now — Jazz Landscapes (2025)
           </div>
           <a href="#concerts" class="hero__upcoming" id="hero-upcoming" hidden>
             <span class="hero__upcoming-label">Prossimo concerto</span>
@@ -180,7 +192,32 @@
     </section>
 
     <section class="album section section--dark" id="album">
-      <div class="container album__grid">
+      <div class="container album__grid album__grid--upcoming reveal" id="album-upcoming">
+        <div class="album__cover-wrap">
+          <div class="album__vinyl album__vinyl--upcoming">
+            <div class="album__cover-placeholder" aria-hidden="true">
+              <span class="album__cover-placeholder-title">Jazz for Peace</span>
+              <span class="album__cover-placeholder-date">15 · 01 · 2027</span>
+            </div>
+          </div>
+        </div>
+        <div class="album__info">
+          <span class="section__label">Prossima uscita</span>
+          <h2 class="section__title">Jazz for Peace</h2>
+          <ul class="album__meta">
+            <li><strong>Uscita:</strong> 15 gennaio 2027</li>
+            <li><strong>Ospiti:</strong> Fabrizio Bosso · ONJ</li>
+            <li><strong>Composizioni:</strong> Pino Jodice</li>
+            <li><strong>Genere:</strong> Jazz · Strumentale</li>
+          </ul>
+          <p>Nuovo progetto discografico del Sunrise String Jazz Quartet con <strong>Fabrizio Bosso</strong> e l'<strong>ONJ</strong> (Orchestra Nazionale Jazz): un album interamente dedicato alle composizioni di <strong>Pino Jodice</strong>, in arrivo il <strong>15 gennaio 2027</strong>.</p>
+          <a href="https://www.instagram.com/sunrise_string_jazz_quartet/" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Segui gli aggiornamenti</a>
+        </div>
+      </div>
+
+      <div class="container album__divider reveal" aria-hidden="true"></div>
+
+      <div class="container album__grid" id="album-landscapes">
         <div class="album__cover-wrap reveal">
           <div class="album__vinyl">
             <img src="assets/album-cover.jpg" alt="Copertina Jazz Landscapes" class="album__cover" loading="lazy">
@@ -280,6 +317,23 @@
         <div class="concerts__block">
           <h3 class="concerts__subtitle">Concerti recenti</h3>
           <div class="concerts__list" id="concerts-past">
+            <article class="concert-card" data-date="2027-01-15" data-type="release">
+              <div class="concert-card__date">
+                <span class="concert-card__day">15</span>
+                <span class="concert-card__month">Gen</span>
+                <span class="concert-card__year">2027</span>
+              </div>
+              <div class="concert-card__body">
+                <h4 class="concert-card__title">Uscita album — Jazz for Peace</h4>
+                <p class="concert-card__venue">Con Fabrizio Bosso e ONJ</p>
+                <p class="concert-card__location">Nuovo album in uscita</p>
+                <ul class="concert-card__meta">
+                  <li>Composizioni di Pino Jodice</li>
+                  <li>Sunrise String Jazz Quartet</li>
+                </ul>
+              </div>
+            </article>
+
             <article class="concert-card" data-date="2025-08-08">
               <div class="concert-card__date">
                 <span class="concert-card__day">08</span>
