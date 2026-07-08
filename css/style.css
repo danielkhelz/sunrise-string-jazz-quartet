@@ -55,11 +55,6 @@ body {
 
 /* Nessuna animazione che nasconde contenuto — compatibilità Brave */
 
-body.menu-open {
-  overflow: hidden;
-  overscroll-behavior: none;
-}
-
 img {
   max-width: 100%;
   height: auto;
@@ -326,10 +321,16 @@ section[id] {
   width: 100%;
 }
 
+.nav__drawer {
+  display: flex;
+  align-items: center;
+}
+
 .nav__toggle {
   display: none;
   flex-direction: column;
   gap: 5px;
+  list-style: none;
   background: none;
   border: none;
   cursor: pointer;
@@ -342,6 +343,10 @@ section[id] {
   touch-action: manipulation;
 }
 
+.nav__toggle::-webkit-details-marker { display: none; }
+
+.nav__toggle::marker { content: ""; }
+
 .nav__toggle span {
   display: block;
   width: 24px;
@@ -350,9 +355,9 @@ section[id] {
   transition: transform var(--transition), opacity var(--transition);
 }
 
-.nav__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav__drawer[open] > .nav__toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__drawer[open] > .nav__toggle span:nth-child(2) { opacity: 0; }
+.nav__drawer[open] > .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* Buttons */
 .btn {
@@ -571,7 +576,6 @@ section[id] {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1.25rem;
-  animation: fadeUp 0.8s ease both;
 }
 
 .hero__title {
@@ -581,7 +585,6 @@ section[id] {
   line-height: 1.05;
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
-  animation: fadeUp 0.8s 0.1s ease both;
 }
 
 .hero__title span {
@@ -597,7 +600,6 @@ section[id] {
   margin-inline: auto;
   margin-bottom: 2.25rem;
   line-height: 1.75;
-  animation: fadeUp 0.8s 0.2s ease both;
 }
 
 .hero__cta {
@@ -606,7 +608,6 @@ section[id] {
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
-  animation: fadeUp 0.8s 0.3s ease both;
 }
 
 .hero__badge {
@@ -622,7 +623,6 @@ section[id] {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-left: 3px solid var(--accent);
   backdrop-filter: blur(8px);
-  animation: fadeUp 0.8s 0.4s ease both;
 }
 
 .hero__badge--secondary {
@@ -630,7 +630,6 @@ section[id] {
   color: rgba(255, 255, 255, 0.55);
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(255, 255, 255, 0.08);
-  animation: fadeUp 0.8s 0.5s ease both;
   margin-top: 1rem;
 }
 
@@ -650,7 +649,6 @@ section[id] {
   align-items: center;
   width: 100%;
   max-width: 100%;
-  animation: fadeUp 0.9s 0.2s ease both;
 }
 
 .hero__photo-credit {
@@ -670,17 +668,8 @@ section[id] {
   pointer-events: none;
   background: rgba(13, 13, 13, 0.72);
   border-radius: 2px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
-}
-
-.hero__bg-media:hover .hero__photo-credit,
-.hero__bg-media:focus-visible .hero__photo-credit,
-.hero__bg-media:focus-within .hero__photo-credit {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2324,11 +2313,27 @@ body.menu-open .ssjq-scroll-up {
   }
 }
 
-/* Responsive — nav mobile (7 voci non entrano sotto 1200px) */
+@media (min-width: 1201px) {
+  .nav__drawer > .nav__toggle { display: none; }
+
+  .nav__drawer .nav__menu {
+    display: flex;
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+/* Responsive — nav mobile (menu HTML nativo con details, senza JS) */
 @media (max-width: 1200px) {
   .nav__toggle { display: flex; }
 
-  .nav__menu {
+  .nav__drawer .nav__menu {
     position: fixed;
     top: var(--header-h);
     left: 0;
@@ -2352,14 +2357,18 @@ body.menu-open .ssjq-scroll-up {
     transition: visibility var(--transition), opacity var(--transition);
   }
 
-  .nav__menu--open {
+  .nav__drawer[open] .nav__menu {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
   }
 
-  body.menu-open .hero,
-  body.menu-open main {
+  body:has(.nav__drawer[open]) {
+    overflow: hidden;
+  }
+
+  body:has(.nav__drawer[open]) .hero,
+  body:has(.nav__drawer[open]) main {
     pointer-events: none;
   }
 

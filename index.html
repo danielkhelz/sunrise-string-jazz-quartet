@@ -64,17 +64,19 @@
       <a href="#home" class="nav__logo">
         <img src="assets/logo-brand.jpg" alt="Sunrise String Jazz Quartet" class="nav__logo-img">
       </a>
-      <button type="button" class="nav__toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__menu" id="nav-menu">
-        <li><a href="#about">Il Quartetto</a></li>
-        <li><a href="#album">Album</a></li>
-        <li><a href="#video">Video</a></li>
-        <li><a href="#concerts">Concerti</a></li>
-        <li><a href="#music">Ascolta</a></li>
-        <li><a href="#contact">Contatti</a></li>
-      </ul>
+      <details class="nav__drawer">
+        <summary class="nav__toggle" aria-label="Apri menu">
+          <span></span><span></span><span></span>
+        </summary>
+        <ul class="nav__menu" id="nav-menu">
+          <li><a href="#about">Il Quartetto</a></li>
+          <li><a href="#album">Album</a></li>
+          <li><a href="#video">Video</a></li>
+          <li><a href="#concerts">Concerti</a></li>
+          <li><a href="#music">Ascolta</a></li>
+          <li><a href="#contact">Contatti</a></li>
+        </ul>
+      </details>
     </nav>
   </header>
 
@@ -94,9 +96,9 @@
           <p class="hero__eyebrow">Quartetto d'archi jazz</p>
           <h1 class="hero__title">Sunrise String<br><span>Jazz Quartet</span></h1>
           <p class="hero__subtitle">Quattro archi, un'unica voce tra jazz, cinema e pop. Ascolta l'album, scopri i concerti e prenota il quartetto per il tuo evento.</p>
-          <a href="#concerts" class="hero__upcoming" id="hero-upcoming" hidden>
-            <span class="hero__upcoming-text" id="hero-upcoming-text"></span>
-            <span class="hero__upcoming-label" id="hero-upcoming-label"></span>
+          <a href="evento-risonanze-musicali-brunello-2026.html" class="hero__upcoming" id="hero-upcoming">
+            <span class="hero__upcoming-text" id="hero-upcoming-text">Risonanze Musicali — Jazz Landscapes</span>
+            <span class="hero__upcoming-label" id="hero-upcoming-label">11 ottobre 2026 · Brunello (VA) · ore 17:00</span>
           </a>
           <div class="hero__cta">
             <a href="#concerts" class="btn btn--primary">Prossimi concerti</a>
@@ -108,7 +110,7 @@
 
     <section class="about section section--cream" id="about">
       <div class="container about__grid">
-        <div class="about__visual reveal">
+        <div class="about__visual">
           <div class="about__img-frame">
             <img src="assets/gallery/quartetto-live.webp" alt="Sunrise String Jazz Quartet in concerto dal vivo" class="about__img" loading="lazy" width="800" height="533">
             <span class="about__accent" aria-hidden="true"></span>
@@ -124,7 +126,7 @@
         </div>
       </div>
 
-      <div class="members container reveal">
+      <div class="members container">
         <details class="member-card" id="member-anna">
           <summary class="member-card__head" aria-label="Anna Glibchuk — apri biografia">
             <span class="member-card__instrument">1° violino · fondatrice e leader</span>
@@ -189,7 +191,7 @@
     </section>
 
     <section class="album section section--dark" id="album">
-      <div class="container album__grid album__grid--upcoming reveal" id="album-upcoming">
+      <div class="container album__grid album__grid--upcoming" id="album-upcoming">
         <div class="album__cover-wrap">
           <div class="album__vinyl album__vinyl--upcoming">
             <div class="album__cover-placeholder" aria-hidden="true">
@@ -232,10 +234,10 @@
         </div>
       </div>
 
-      <div class="container album__divider reveal" aria-hidden="true"></div>
+      <div class="container album__divider" aria-hidden="true"></div>
 
       <div class="container album__grid" id="album-landscapes">
-        <div class="album__cover-wrap reveal">
+        <div class="album__cover-wrap">
           <div class="album__vinyl">
             <img src="assets/album-cover.jpg" alt="Copertina Jazz Landscapes" class="album__cover" loading="lazy">
           </div>
@@ -255,7 +257,7 @@
         </div>
       </div>
 
-      <div class="container album__player-wrap reveal">
+      <div class="container album__player-wrap">
         <h3 class="album__player-title">Ascolta in anteprima</h3>
         <div class="album__player" data-spotify="5r6zYVWxDqFrTzCkR0VwnN" data-spotify-title="Jazz Landscapes — Sunrise String Jazz Quartet su Spotify">
           <button type="button" class="spotify__facade-btn" aria-label="Carica player Spotify Jazz Landscapes">
@@ -267,7 +269,7 @@
         </div>
       </div>
 
-      <div class="tracklist container reveal">
+      <div class="tracklist container">
         <h3 class="tracklist__title">Tracklist</h3>
         <ol class="tracklist__list">
           <li><span class="track__num">01</span><span class="track__name">Suite for Sting — Medley: Shape of My Heart / Fragile / Englishman in New York</span><span class="track__note">Sting</span></li>
@@ -288,7 +290,7 @@
         <h2 class="section__title">Guarda e ascolta</h2>
         <p class="section__intro">Video ufficiali e live dal canale YouTube: ascolta il suono del quartetto prima del concerto.</p>
 
-        <div class="video__featured reveal">
+        <div class="video__featured">
           <div class="video__player" data-video="GnKa-6p5Xq0" data-title="Melodia Infinita — Sunrise String Jazz Quartet (Official Video)">
             <button type="button" class="video__facade-btn" aria-label="Riproduci Melodia Infinita">
               <span class="video__facade-play" aria-hidden="true">
@@ -333,7 +335,7 @@
         <h2 class="section__title">Date concerti</h2>
         <p class="section__intro">Due date in calendario: Brunello con ingresso libero e la presentazione di Jazz for Peace a Milano. Segui gli aggiornamenti e prenota il quartetto.</p>
 
-        <a href="evento-risonanze-musicali-brunello-2026.html" class="concert-spotlight reveal">
+        <a href="evento-risonanze-musicali-brunello-2026.html" class="concert-spotlight">
           <div class="concert-spotlight__media">
             <img src="assets/gallery/quartetto-live-stage.jpg" alt="Live a Lerici 8 agosto 2025 — Sunrise String Jazz Quartet" class="concert-spotlight__img" loading="lazy" decoding="async">
           </div>
@@ -347,23 +349,15 @@
 
         <div class="concerts__block">
           <h3 class="concerts__subtitle concerts__subtitle--upcoming">Prossime date</h3>
-          <div class="concerts__list concerts__list--upcoming" id="concerts-upcoming"></div>
-          <div class="concerts__empty" id="concerts-empty">
-            <p>Nuove date in programmazione.</p>
-            <a href="https://www.instagram.com/sunrise_string_jazz_quartet/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Segui gli aggiornamenti</a>
-          </div>
-        </div>
-
-        <div class="concerts__block">
-          <h3 class="concerts__subtitle">Concerti recenti</h3>
-          <div class="concerts__list" id="concerts-past">
-            <article class="concert-card" data-date="2026-10-11">
+          <div class="concerts__list concerts__list--upcoming" id="concerts-upcoming">
+            <article class="concert-card concert-card--upcoming" data-date="2026-10-11">
               <div class="concert-card__date">
                 <span class="concert-card__day">11</span>
                 <span class="concert-card__month">Ott</span>
                 <span class="concert-card__year">2026</span>
               </div>
               <div class="concert-card__body">
+                <span class="concert-card__badge">Prossimo</span>
                 <h4 class="concert-card__title">Risonanze Musicali — Jazz Landscapes</h4>
                 <p class="concert-card__venue">ARTandCHARITY O.D.V. · ore 17:00</p>
                 <p class="concert-card__location">Le Cascine di S. Maria Annunciata · Brunello (VA)</p>
@@ -376,7 +370,7 @@
               </div>
             </article>
 
-            <article class="concert-card" data-date="2027-01-15">
+            <article class="concert-card concert-card--upcoming" data-date="2027-01-15">
               <div class="concert-card__date">
                 <span class="concert-card__day">15</span>
                 <span class="concert-card__month">Gen</span>
@@ -393,7 +387,16 @@
                 <a href="jazz-for-peace.html" class="concert-card__link">Scopri il progetto</a>
               </div>
             </article>
+          </div>
+          <div class="concerts__empty" id="concerts-empty">
+            <p>Nuove date in programmazione.</p>
+            <a href="https://www.instagram.com/sunrise_string_jazz_quartet/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Segui gli aggiornamenti</a>
+          </div>
+        </div>
 
+        <div class="concerts__block">
+          <h3 class="concerts__subtitle">Concerti recenti</h3>
+          <div class="concerts__list" id="concerts-past">
             <article class="concert-card" data-date="2025-08-08">
               <div class="concert-card__date">
                 <span class="concert-card__day">08</span>
@@ -654,7 +657,6 @@
     </div>
   </footer>
 
-  <script src="js/cookie-consent.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>
