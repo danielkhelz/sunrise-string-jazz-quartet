@@ -1934,8 +1934,8 @@ section[id] {
   transform: scale(1.08);
 }
 
-/* Back to top */
-.back-to-top {
+/* Torna in alto — nome specifico per evitare filtri Brave/adblock */
+.ssjq-scroll-up {
   position: fixed;
   right: max(1.25rem, env(safe-area-inset-right, 0px));
   bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
@@ -1962,30 +1962,31 @@ section[id] {
   touch-action: manipulation;
 }
 
-.back-to-top--visible {
+.ssjq-scroll-up.ssjq-scroll-up--on {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.back-to-top:hover {
+.ssjq-scroll-up:hover {
   background: var(--accent-dark);
   box-shadow: var(--shadow-glow);
 }
 
-.back-to-top:focus-visible {
+.ssjq-scroll-up:focus-visible {
   outline: 2px solid var(--white);
   outline-offset: 3px;
 }
 
-.back-to-top svg {
+.ssjq-scroll-up svg {
   width: 22px;
   height: 22px;
+  pointer-events: none;
 }
 
-body.menu-open .back-to-top {
-  opacity: 0;
-  visibility: hidden;
+body.menu-open .ssjq-scroll-up {
+  opacity: 0 !important;
+  visibility: hidden !important;
   pointer-events: none;
 }
 
