@@ -138,7 +138,14 @@ document.querySelectorAll('.member-card').forEach(card => {
 /* Video YouTube */
 const YT_ALLOW = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
 
+function sanitizeVideoId(videoId) {
+  const match = String(videoId).match(/^[a-zA-Z0-9_-]{11}$/);
+  return match ? match[0] : null;
+}
+
 function buildYouTubeUrl(videoId, autoplay = false) {
+  const safeId = sanitizeVideoId(videoId);
+  if (!safeId) return '';
   const params = new URLSearchParams({
     autoplay: autoplay ? '1' : '0',
     playsinline: '1',
@@ -146,7 +153,7 @@ function buildYouTubeUrl(videoId, autoplay = false) {
     modestbranding: '1',
     enablejsapi: '1'
   });
-  return `https://www.youtube-nocookie.com/embed/${videoId}?${params}`;
+  return `https://www.youtube-nocookie.com/embed/${safeId}?${params}`;
 }
 
 function escapeHtml(text) {
@@ -158,9 +165,11 @@ function escapeHtml(text) {
 }
 
 function mountYouTubeIframe(container, videoId, { autoplay = false, title = '' } = {}) {
-  if (!container) return;
+  if (!container || !sanitizeVideoId(videoId)) return;
   const iframe = document.createElement('iframe');
-  iframe.src = buildYouTubeUrl(videoId, autoplay);
+  const src = buildYouTubeUrl(videoId, autoplay);
+  if (!src) return;
+  iframe.src = src;
   iframe.title = title || 'Video Sunrise String Jazz Quartet';
   iframe.allow = YT_ALLOW;
   iframe.allowFullscreen = true;
@@ -171,8 +180,9 @@ function mountYouTubeIframe(container, videoId, { autoplay = false, title = '' }
 }
 
 function mountVideoFacade(container, videoId, { title = '' } = {}) {
-  if (!container) return;
-  const posterUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  const safeId = sanitizeVideoId(videoId);
+  if (!container || !safeId) return;
+  const posterUrl = `https://i.ytimg.com/vi/${safeId}/hqdefault.jpg`;
   const safeTitle = escapeHtml(title || 'Riproduci video');
 
   container.classList.remove('video__player--active');
@@ -186,7 +196,7 @@ function mountVideoFacade(container, videoId, { title = '' } = {}) {
     </button>`;
 
   container.querySelector('.video__facade-btn').addEventListener('click', () => {
-    mountYouTubeIframe(container, videoId, { autoplay: true, title });
+    mountYouTubeIframe(container, safeId, { autoplay: true, title });
   }, { once: true });
 }
 
