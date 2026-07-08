@@ -82,31 +82,6 @@
   } catch (_) { /* ok */ }
 
   try {
-    document.querySelectorAll('.album__player[data-spotify]').forEach((container) => {
-      const match = String(container.dataset.spotify || '').match(/^[a-zA-Z0-9]{22}$/);
-      const safeId = match ? match[0] : null;
-      const btn = container.querySelector('.spotify__facade-btn');
-      if (!safeId || !btn || btn.dataset.bound === '1') return;
-      btn.dataset.bound = '1';
-      const title = container.dataset.spotifyTitle || '';
-      btn.addEventListener('click', () => {
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://open.spotify.com/embed/album/${safeId}?utm_source=generator&theme=0`;
-        iframe.title = title || 'Jazz Landscapes su Spotify';
-        iframe.width = '100%';
-        iframe.height = '352';
-        iframe.loading = 'lazy';
-        iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-        iframe.allowFullscreen = true;
-        iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-        container.innerHTML = '';
-        container.classList.add('album__player--active');
-        container.appendChild(iframe);
-      }, { once: true });
-    });
-  } catch (_) { /* ok */ }
-
-  try {
     if (new URLSearchParams(window.location.search).get('inviato') === '1') {
       const contactSection = document.getElementById('contact');
       const form = contactSection?.querySelector('.contact__form');

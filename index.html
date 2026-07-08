@@ -260,13 +260,21 @@
 
       <div class="container album__player-wrap">
         <h3 class="album__player-title">Ascolta in anteprima</h3>
-        <div class="album__player" data-spotify="5r6zYVWxDqFrTzCkR0VwnN" data-spotify-title="Jazz Landscapes — Sunrise String Jazz Quartet su Spotify">
-          <button type="button" class="spotify__facade-btn" aria-label="Carica player Spotify Jazz Landscapes">
-            <span class="spotify__facade-play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <span class="spotify__facade-label">Ascolta su Spotify</span>
-          </button>
+        <div class="album__player album__player--embed">
+          <iframe
+            src="https://open.spotify.com/embed/album/5r6zYVWxDqFrTzCkR0VwnN?utm_source=generator&theme=0"
+            title="Jazz Landscapes — Sunrise String Jazz Quartet su Spotify"
+            width="100%"
+            height="352"
+            loading="lazy"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+          <p class="album__player-fallback">
+            Player non visibile?
+            <a href="https://open.spotify.com/album/5r6zYVWxDqFrTzCkR0VwnN" target="_blank" rel="noopener noreferrer">Apri l'album su Spotify</a>
+          </p>
         </div>
       </div>
 
@@ -314,6 +322,7 @@
             <article class="video-card">
               <div class="video__player" data-video="kzEuSb2AV80" data-title="Live @ Lerici — Jazz Landscapes">
                 <button type="button" class="video__facade-btn" aria-label="Riproduci live Lerici">
+                  <img src="assets/gallery/quartetto-live-stage.jpg" alt="" width="1280" height="800" loading="lazy" decoding="async">
                   <span class="video__facade-play" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                   </span>
