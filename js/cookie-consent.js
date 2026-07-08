@@ -23,16 +23,17 @@ if (yearEl) {
   banner.setAttribute('data-ssjq', 'cookie-notice');
 
   const text = document.createElement('p');
-  text.textContent = 'Questo sito non usa cookie di profilazione. Utilizziamo solo tecnologie necessarie e cookie di terze parti (YouTube, Spotify) se interagisci con i contenuti incorporati. ';
+  text.textContent = 'Questo sito non usa cookie di profilazione. Utilizziamo solo tecnologie necessarie e cookie di terze parti (YouTube, Spotify) se interagisci con i contenuti incorporati. Consulta la ';
   const link = document.createElement('a');
   link.href = 'cookie-policy.html';
   link.textContent = 'Cookie Policy';
   text.appendChild(link);
-  text.appendChild(document.createTextNode(' · '));
+  text.appendChild(document.createTextNode(' e la '));
   const privacyLink = document.createElement('a');
   privacyLink.href = 'privacy-policy.html';
   privacyLink.textContent = 'Privacy Policy';
   text.appendChild(privacyLink);
+  text.appendChild(document.createTextNode('.'));
 
   const btn = document.createElement('button');
   btn.type = 'button';
@@ -100,7 +101,4 @@ if (yearEl) {
   document.addEventListener('keydown', function onKey(e) {
     if (e.key === 'Escape' && document.body.contains(banner)) {
       dismiss();
-      document.removeEventListener('keydown', onKey);
-    }
-  });
-})();
+      document.remo
