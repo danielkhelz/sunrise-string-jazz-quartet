@@ -18,8 +18,8 @@
   --shadow-md: 0 8px 32px rgba(13, 13, 13, 0.12);
   --shadow-lg: 0 20px 60px rgba(13, 13, 13, 0.18);
   --shadow-glow: 0 24px 64px rgba(196, 30, 58, 0.25);
-  --font-display: Georgia, "Times New Roman", serif;
-  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --container-max: 1140px;
   --gutter: clamp(1rem, 4vw, 3rem);
   --section-pad: clamp(4rem, 8vw, 7.5rem);
