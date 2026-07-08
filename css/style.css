@@ -18,8 +18,8 @@
   --shadow-md: 0 8px 32px rgba(13, 13, 13, 0.12);
   --shadow-lg: 0 20px 60px rgba(13, 13, 13, 0.18);
   --shadow-glow: 0 24px 64px rgba(196, 30, 58, 0.25);
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --container-max: 1140px;
   --gutter: clamp(1rem, 4vw, 3rem);
   --section-pad: clamp(4rem, 8vw, 7.5rem);
@@ -54,8 +54,18 @@ body {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js-ready .reveal:not(.reveal--visible) {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+.reveal {
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
@@ -1185,8 +1195,10 @@ section[id] {
 }
 
 .album__player {
+  position: relative;
   width: 100%;
   min-width: 0;
+  min-height: 352px;
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -1199,6 +1211,57 @@ section[id] {
   height: 352px;
   min-height: 352px;
   border: 0;
+}
+
+.album__player--active {
+  min-height: 352px;
+}
+
+.spotify__facade-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 352px;
+  padding: 2rem 1.5rem;
+  border: none;
+  background:
+    linear-gradient(180deg, rgba(13, 13, 13, 0.55) 0%, rgba(13, 13, 13, 0.82) 100%),
+    url("../assets/album-cover.jpg") center / cover no-repeat;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.spotify__facade-btn:hover {
+  filter: brightness(1.05);
+}
+
+.spotify__facade-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #1db954;
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+
+.spotify__facade-play svg {
+  width: 30px;
+  height: 30px;
+}
+
+.spotify__facade-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .tracklist__title {
@@ -2902,6 +2965,7 @@ body.menu-open .ssjq-scroll-up {
   .member-card__head,
   .platform-card,
   .video__facade-btn,
+  .spotify__facade-btn,
   .social__link {
     min-height: 44px;
   }

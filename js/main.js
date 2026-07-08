@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js-ready');
+
 const header = document.getElementById('header');
 const toggle = document.querySelector('.nav__toggle');
 const menu = document.querySelector('.nav__menu');
@@ -51,12 +53,18 @@ function trapMenuFocus(e) {
   }
 }
 
+let ignoreNextOutsideClick = false;
+
 if (toggle && menu) {
   toggle.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
+    ignoreNextOutsideClick = true;
     const isOpen = toggle.getAttribute('aria-expanded') === 'true';
     setMenuOpen(!isOpen);
+    requestAnimationFrame(() => {
+      ignoreNextOutsideClick = false;
+    });
   });
 
   menu.querySelectorAll('a').forEach(link => {
@@ -71,6 +79,7 @@ if (toggle && menu) {
   });
 
   document.addEventListener('click', e => {
+    if (ignoreNextOutsideClick) return;
     if (!menu.classList.contains('nav__menu--open')) return;
     if (toggle.contains(e.target) || menu.contains(e.target)) return;
     setMenuOpen(false);
@@ -108,17 +117,43 @@ const navObserver = new IntersectionObserver(entries => {
 
 sections.forEach(section => navObserver.observe(section));
 
-/* Scroll reveal */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('reveal--visible');
-      revealObserver.unobserve(entry.target);
+/* Scroll reveal — contenuto sempre leggibile se JS/Brave blocca qualcosa */
+const revealEls = document.querySelectorAll('.reveal');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function markRevealVisible(el) {
+  el.classList.add('reveal--visible');
+  revealObserver.unobserve(el);
+}
+
+function revealInViewport() {
+  revealEls.forEach(el => {
+    if (el.classList.contains('reveal--visible')) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.94 && rect.bottom > 0) {
+      markRevealVisible(el);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) markRevealVisible(entry.target);
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
+
+if (prefersReducedMotion) {
+  revealEls.forEach(el => el.classList.add('reveal--visible'));
+} else {
+  revealEls.forEach(el => revealObserver.observe(el));
+  revealInViewport();
+  window.addEventListener('load', () => {
+    requestAnimationFrame(revealInViewport);
+    window.setTimeout(revealInViewport, 120);
+    window.setTimeout(revealInViewport, 900);
+  });
+  window.addEventListener('resize', revealInViewport, { passive: true });
+}
 
 /* Member cards — biografia al click */
 document.querySelectorAll('.member-card').forEach(card => {
@@ -203,6 +238,48 @@ function mountVideoFacade(container, videoId, { title = '' } = {}) {
 document.querySelectorAll('.video__player[data-video]').forEach(player => {
   mountVideoFacade(player, player.dataset.video, {
     title: player.dataset.title || ''
+  });
+});
+
+/* Spotify embed — caricato solo al clic (compatibile Brave Shield) */
+function sanitizeSpotifyId(id) {
+  const match = String(id).match(/^[a-zA-Z0-9]{22}$/);
+  return match ? match[0] : null;
+}
+
+function mountSpotifyFacade(container, albumId, { title = '' } = {}) {
+  const safeId = sanitizeSpotifyId(albumId);
+  if (!container || !safeId) return;
+
+  const safeTitle = escapeHtml(title || 'Carica player Spotify');
+
+  container.innerHTML = `
+    <button type="button" class="spotify__facade-btn" aria-label="${safeTitle}">
+      <span class="spotify__facade-play" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+      <span class="spotify__facade-label">Ascolta su Spotify</span>
+    </button>`;
+
+  container.querySelector('.spotify__facade-btn').addEventListener('click', () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://open.spotify.com/embed/album/${safeId}?utm_source=generator&theme=0`;
+    iframe.title = title || 'Jazz Landscapes su Spotify';
+    iframe.width = '100%';
+    iframe.height = '352';
+    iframe.loading = 'lazy';
+    iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    container.innerHTML = '';
+    container.classList.add('album__player--active');
+    container.appendChild(iframe);
+  }, { once: true });
+}
+
+document.querySelectorAll('.album__player[data-spotify]').forEach(player => {
+  mountSpotifyFacade(player, player.dataset.spotify, {
+    title: player.dataset.spotifyTitle || ''
   });
 });
 
