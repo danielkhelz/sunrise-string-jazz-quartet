@@ -615,36 +615,6 @@ section[id] {
   border-radius: 999px;
 }
 
-.hero__scroll {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
-  z-index: 2;
-  animation: fadeUp 1s 0.6s ease both;
-  cursor: pointer;
-  padding: 0.5rem;
-  min-width: 44px;
-  min-height: 44px;
-  justify-content: center;
-  transition: color var(--transition), transform var(--transition);
-}
-
-.hero__scroll:hover,
-.hero__scroll:focus-visible {
-  color: rgba(255, 255, 255, 0.75);
-  transform: translateX(-50%) translateY(2px);
-}
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
@@ -2382,8 +2352,6 @@ section[id] {
   .hero__vinyl,
   .hero__photo { max-width: min(220px, 62vw); }
 
-  .hero__scroll { display: none; }
-
   .hero__wave { height: 48px; }
 
   .about__grid {
@@ -2748,7 +2716,6 @@ section[id] {
 
   .hero__trust { display: none; }
   .hero__wave { display: none; }
-  .hero__scroll { display: none; }
 }
 
 /* Touch devices — larger targets, no hover lift */
@@ -2758,8 +2725,7 @@ section[id] {
   .member-card__head,
   .platform-card,
   .video__facade-btn,
-  .social__link,
-  .hero__scroll {
+  .social__link {
     min-height: 44px;
   }
 
