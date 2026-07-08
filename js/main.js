@@ -181,21 +181,53 @@ if (concertsPast && concertsUpcoming) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  [...concertsPast.querySelectorAll('.concert-card')].forEach(card => {
-    const date = new Date(card.dataset.date + 'T12:00:00');
+  const upcomingCards = [...concertsPast.querySelectorAll('.concert-card')]
+    .filter(card => new Date(card.dataset.date + 'T12:00:00') >= today)
+    .sort((a, b) => new Date(a.dataset.date) - new Date(b.dataset.date));
+
+  upcomingCards.forEach((card, index) => {
     const body = card.querySelector('.concert-card__body');
-    if (date >= today && body) {
-      card.classList.add('concert-card--upcoming');
+    if (!body) return;
+
+    card.classList.add('concert-card--upcoming');
+
+    if (index === 0) {
       const badge = document.createElement('span');
       badge.className = 'concert-card__badge';
       badge.textContent = 'Prossimo';
       body.prepend(badge);
-      concertsUpcoming.appendChild(card);
     }
+
+    concertsUpcoming.appendChild(card);
   });
 
   if (!concertsUpcoming.children.length && concertsEmpty) {
     concertsEmpty.classList.add('concerts__empty--visible');
+  }
+
+  const heroUpcoming = document.getElementById('hero-upcoming');
+  const heroUpcomingText = document.getElementById('hero-upcoming-text');
+  const heroUpcomingLabel = document.getElementById('hero-upcoming-label');
+  const firstUpcoming = upcomingCards[0];
+
+  if (heroUpcoming && heroUpcomingText && heroUpcomingLabel && firstUpcoming) {
+    const title = firstUpcoming.querySelector('.concert-card__title')?.textContent?.trim();
+    const location = firstUpcoming.querySelector('.concert-card__location')?.textContent?.trim();
+    const venue = firstUpcoming.querySelector('.concert-card__venue')?.textContent?.trim();
+    const eventDate = new Date(firstUpcoming.dataset.date + 'T12:00:00');
+    const dateLabel = eventDate.toLocaleDateString('it-IT', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+    const detailLink = firstUpcoming.querySelector('.concert-card__link')?.getAttribute('href');
+
+    if (title) {
+      heroUpcomingText.textContent = title;
+      heroUpcomingLabel.textContent = [dateLabel, location, venue].filter(Boolean).join(' · ');
+      heroUpcoming.href = detailLink || '#concerts';
+      heroUpcoming.hidden = false;
+    }
   }
 }
 
