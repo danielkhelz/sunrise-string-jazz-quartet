@@ -302,3 +302,24 @@ function showContactSuccess() {
 if (new URLSearchParams(window.location.search).get('inviato') === '1') {
   showContactSuccess();
 }
+
+/* Torna in alto */
+const backToTop = document.getElementById('back-to-top');
+const BACK_TO_TOP_OFFSET = 400;
+
+if (backToTop) {
+  const toggleBackToTop = () => {
+    const show = window.scrollY > BACK_TO_TOP_OFFSET;
+    backToTop.classList.toggle('back-to-top--visible', show);
+    backToTop.hidden = !show;
+  };
+
+  window.addEventListener('scroll', toggleBackToTop, { passive: true });
+  toggleBackToTop();
+
+  backToTop.addEventListener('click', () => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+    backToTop.blur();
+  });
+}
