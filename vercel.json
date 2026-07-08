@@ -1,5 +1,19 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "sunrise-string-jazz-quartet.vercel.app" }],
+      "destination": "https://sunrisestringjazzquartet.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "sunrise-string-jazz-quartet-danielkhelzs-projects.vercel.app" }],
+      "destination": "https://sunrisestringjazzquartet.com/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
