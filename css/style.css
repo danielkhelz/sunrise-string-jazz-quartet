@@ -564,7 +564,8 @@ section[id] {
   animation: pulse 2s infinite;
 }
 
-.hero__album {
+.hero__album,
+.hero__visual {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -580,12 +581,38 @@ section[id] {
   aspect-ratio: 1;
 }
 
-.hero__album-cover {
+.hero__album-cover,
+.hero__photo {
   width: 100%;
-  height: 100%;
+  max-width: min(400px, 100%);
   object-fit: cover;
   border-radius: var(--radius);
   box-shadow: var(--shadow-glow), 0 24px 64px rgba(0, 0, 0, 0.55);
+}
+
+.hero__photo {
+  aspect-ratio: 5 / 4;
+}
+
+.hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+  list-style: none;
+  margin-top: 1.25rem;
+  animation: fadeUp 0.8s 0.55s ease both;
+}
+
+.hero__trust li {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0.4rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
 }
 
 .hero__scroll {
@@ -1446,6 +1473,72 @@ section[id] {
   transform: translateY(-2px);
 }
 
+.concert-spotlight {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 0;
+  margin-bottom: 2.5rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.concert-spotlight:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.concert-spotlight__img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.concert-spotlight__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.concert-spotlight__eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.concert-spotlight__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.concert-spotlight__meta {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.concert-spotlight__cta {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 .concert-card__badge {
   display: inline-block;
   font-size: 0.62rem;
@@ -2039,8 +2132,13 @@ section[id] {
     min-height: max(640px, 100svh);
   }
 
-  .hero__album { order: -1; }
-  .hero__vinyl { max-width: min(300px, 72vw); margin-inline: auto; }
+  .hero__album,
+  .hero__visual { order: -1; }
+  .hero__vinyl,
+  .hero__photo { max-width: min(300px, 72vw); margin-inline: auto; }
+
+  .concert-spotlight { grid-template-columns: 1fr; }
+  .concert-spotlight__img { min-height: 200px; max-height: 260px; }
 
   .hero__content {
     text-align: center;
@@ -2131,7 +2229,8 @@ section[id] {
 
 @media (max-width: 900px) and (min-width: 769px) {
   .members { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero__vinyl { max-width: min(280px, 50vw); }
+  .hero__vinyl,
+  .hero__photo { max-width: min(280px, 50vw); }
   .album__vinyl { width: min(320px, 55vw); }
 }
 
@@ -2244,7 +2343,8 @@ section[id] {
     font-size: 0.875rem;
   }
 
-  .hero__vinyl { max-width: min(220px, 62vw); }
+  .hero__vinyl,
+  .hero__photo { max-width: min(220px, 62vw); }
 
   .hero__scroll { display: none; }
 
@@ -2525,7 +2625,8 @@ section[id] {
 
   .hero__title { font-size: 1.85rem; }
 
-  .hero__vinyl { max-width: min(200px, 75vw); }
+  .hero__vinyl,
+  .hero__photo { max-width: min(200px, 75vw); }
 
   .member-card__head { padding: 1.15rem 2.5rem 1.15rem 0.9rem; }
 
@@ -2561,7 +2662,8 @@ section[id] {
     align-items: center;
   }
 
-  .hero__album { order: 0; }
+  .hero__album,
+  .hero__visual { order: 0; }
   .hero__content {
     text-align: left;
     margin-inline: 0;
@@ -2602,11 +2704,13 @@ section[id] {
     display: none;
   }
 
-  .hero__vinyl {
+  .hero__vinyl,
+  .hero__photo {
     width: min(120px, 28vw);
     max-width: min(120px, 28vw);
   }
 
+  .hero__trust { display: none; }
   .hero__wave { display: none; }
   .hero__scroll { display: none; }
 }

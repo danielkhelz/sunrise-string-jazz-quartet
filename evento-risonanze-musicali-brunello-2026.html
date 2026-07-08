@@ -68,6 +68,28 @@
       border-color: var(--text);
     }
 
+    .event__hero {
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .event__hero img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .event__hero figcaption {
+      padding: 0.65rem 0.85rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: #f8f6f3;
+    }
+
     header {
       padding-bottom: 1.5rem;
       border-bottom: 3px solid var(--accent);
@@ -177,6 +199,11 @@
     <a href="index.html#concerts" class="event__btn event__btn--ghost">Torna al sito</a>
     <button type="button" class="event__btn" onclick="window.print()">Stampa</button>
   </div>
+
+  <figure class="event__hero">
+    <img src="assets/gallery/quartetto-live-stage.jpg" alt="Sunrise String Jazz Quartet in concerto dal vivo" width="1200" height="800" loading="eager">
+    <figcaption>Sunrise String Jazz Quartet dal vivo — Foto: Riccardo Borgia</figcaption>
+  </figure>
 
   <header>
     <p class="event__tagline">VII Rassegna «Risonanze Musicali» · ARTandCHARITY O.D.V.</p>
