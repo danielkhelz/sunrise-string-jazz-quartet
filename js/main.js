@@ -197,28 +197,6 @@ if (concertsPast && concertsUpcoming) {
   if (!concertsUpcoming.children.length && concertsEmpty) {
     concertsEmpty.classList.add('concerts__empty--visible');
   }
-
-  const heroUpcoming = document.getElementById('hero-upcoming');
-  const heroUpcomingText = document.getElementById('hero-upcoming-text');
-  const firstUpcoming = concertsUpcoming.querySelector('.concert-card');
-
-  if (heroUpcoming && heroUpcomingText && firstUpcoming) {
-    const title = firstUpcoming.querySelector('.concert-card__title')?.textContent?.trim();
-    const location = firstUpcoming.querySelector('.concert-card__location')?.textContent?.trim();
-    const day = firstUpcoming.querySelector('.concert-card__day')?.textContent?.trim();
-    const month = firstUpcoming.querySelector('.concert-card__month')?.textContent?.trim();
-    const year = firstUpcoming.querySelector('.concert-card__year')?.textContent?.trim();
-    const label = heroUpcoming.querySelector('.hero__upcoming-label');
-
-    if (title && day && month) {
-      if (label) {
-        label.textContent = firstUpcoming.dataset.type === 'release' ? 'Prossima uscita' : 'Prossimo concerto';
-      }
-      heroUpcomingText.textContent = `${title} — ${day} ${month} ${year || ''}${location ? ` · ${location}` : ''}`.trim();
-      heroUpcoming.href = firstUpcoming.dataset.type === 'release' ? '#album-upcoming' : '#concerts';
-      heroUpcoming.hidden = false;
-    }
-  }
 }
 
 /* Form inviato — messaggio di conferma */
