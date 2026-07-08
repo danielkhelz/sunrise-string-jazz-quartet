@@ -1483,6 +1483,9 @@ section[id] {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
   gap: 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   margin-bottom: 2.5rem;
   border-radius: var(--radius);
   overflow: hidden;
@@ -1494,6 +1497,13 @@ section[id] {
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
+.concert-spotlight__media {
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
 .concert-spotlight:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
@@ -1501,10 +1511,13 @@ section[id] {
 
 .concert-spotlight__img {
   width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
   min-height: 220px;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
   object-position: center 35%;
+  display: block;
 }
 
 .concert-spotlight__body {
@@ -2144,7 +2157,10 @@ section[id] {
   .hero__photo { max-width: min(300px, 72vw); margin-inline: auto; }
 
   .concert-spotlight { grid-template-columns: 1fr; }
-  .concert-spotlight__img { min-height: 200px; max-height: 260px; }
+  .concert-spotlight__img {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
 
   .hero__content {
     text-align: center;
