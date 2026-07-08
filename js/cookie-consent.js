@@ -28,7 +28,7 @@ if (yearEl) {
   link.href = 'cookie-policy.html';
   link.textContent = 'Cookie Policy';
   text.appendChild(link);
-  text.append(' · ');
+  text.appendChild(document.createTextNode(' · '));
   const privacyLink = document.createElement('a');
   privacyLink.href = 'privacy-policy.html';
   privacyLink.textContent = 'Privacy Policy';

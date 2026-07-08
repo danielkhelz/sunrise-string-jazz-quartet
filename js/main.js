@@ -1,5 +1,3 @@
-document.documentElement.classList.add('js-ready');
-
 const header = document.getElementById('header');
 const toggle = document.querySelector('.nav__toggle');
 const menu = document.querySelector('.nav__menu');
@@ -53,18 +51,12 @@ function trapMenuFocus(e) {
   }
 }
 
-let ignoreNextOutsideClick = false;
-
 if (toggle && menu) {
   toggle.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
-    ignoreNextOutsideClick = true;
     const isOpen = toggle.getAttribute('aria-expanded') === 'true';
     setMenuOpen(!isOpen);
-    requestAnimationFrame(() => {
-      ignoreNextOutsideClick = false;
-    });
   });
 
   menu.querySelectorAll('a').forEach(link => {
@@ -78,16 +70,15 @@ if (toggle && menu) {
     trapMenuFocus(e);
   });
 
-  document.addEventListener('click', e => {
-    if (ignoreNextOutsideClick) return;
-    if (!menu.classList.contains('nav__menu--open')) return;
-    if (toggle.contains(e.target) || menu.contains(e.target)) return;
-    setMenuOpen(false);
-  });
-
-  MQ_NAV.addEventListener('change', e => {
+  const onNavBreakpoint = (e) => {
     if (!e.matches) setMenuOpen(false);
-  });
+  };
+
+  if (typeof MQ_NAV.addEventListener === 'function') {
+    MQ_NAV.addEventListener('change', onNavBreakpoint);
+  } else if (typeof MQ_NAV.addListener === 'function') {
+    MQ_NAV.addListener(onNavBreakpoint);
+  }
 }
 
 if (header) {
@@ -100,59 +91,27 @@ if (header) {
   }, { passive: true });
 }
 
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav__menu a');
+try {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav__menu a');
 
-const navObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    navLinks.forEach(link => {
-      const active = link.getAttribute('href') === `#${entry.target.id}`;
-      link.classList.toggle('nav__link--active', active);
-      if (active) link.setAttribute('aria-current', 'page');
-      else link.removeAttribute('aria-current');
-    });
-  });
-}, { rootMargin: '-35% 0px -50% 0px' });
+  if (typeof IntersectionObserver === 'function') {
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(link => {
+          const active = link.getAttribute('href') === `#${entry.target.id}`;
+          link.classList.toggle('nav__link--active', active);
+          if (active) link.setAttribute('aria-current', 'page');
+          else link.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-35% 0px -50% 0px' });
 
-sections.forEach(section => navObserver.observe(section));
-
-/* Scroll reveal — contenuto sempre leggibile se JS/Brave blocca qualcosa */
-const revealEls = document.querySelectorAll('.reveal');
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function markRevealVisible(el) {
-  el.classList.add('reveal--visible');
-  revealObserver.unobserve(el);
-}
-
-function revealInViewport() {
-  revealEls.forEach(el => {
-    if (el.classList.contains('reveal--visible')) return;
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.94 && rect.bottom > 0) {
-      markRevealVisible(el);
-    }
-  });
-}
-
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) markRevealVisible(entry.target);
-  });
-}, { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
-
-if (prefersReducedMotion) {
-  revealEls.forEach(el => el.classList.add('reveal--visible'));
-} else {
-  revealEls.forEach(el => revealObserver.observe(el));
-  revealInViewport();
-  window.addEventListener('load', () => {
-    requestAnimationFrame(revealInViewport);
-    window.setTimeout(revealInViewport, 120);
-    window.setTimeout(revealInViewport, 900);
-  });
-  window.addEventListener('resize', revealInViewport, { passive: true });
+    sections.forEach(section => navObserver.observe(section));
+  }
+} catch (_) {
+  /* navigazione attiva opzionale */
 }
 
 /* Member cards — biografia al click */
@@ -214,32 +173,39 @@ function mountYouTubeIframe(container, videoId, { autoplay = false, title = '' }
   container.appendChild(iframe);
 }
 
-function mountVideoFacade(container, videoId, { title = '' } = {}) {
-  const safeId = sanitizeVideoId(videoId);
+function bindVideoPlayer(container) {
+  const safeId = sanitizeVideoId(container?.dataset?.video);
   if (!container || !safeId) return;
-  const posterUrl = `https://i.ytimg.com/vi/${safeId}/hqdefault.jpg`;
-  const safeTitle = escapeHtml(title || 'Riproduci video');
 
-  container.classList.remove('video__player--active');
-  container.innerHTML = `
-    <button type="button" class="video__facade-btn" aria-label="${safeTitle}">
-      <img src="${escapeHtml(posterUrl)}" alt="" loading="lazy">
-      <span class="video__facade-play" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-      </span>
-      <span class="video__facade-label">Riproduci video</span>
-    </button>`;
+  const title = container.dataset.title || '';
+  let btn = container.querySelector('.video__facade-btn');
 
-  container.querySelector('.video__facade-btn').addEventListener('click', () => {
+  if (!btn) {
+    const safeTitle = escapeHtml(title || 'Riproduci video');
+    container.innerHTML = `
+      <button type="button" class="video__facade-btn" aria-label="${safeTitle}">
+        <span class="video__facade-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+        <span class="video__facade-label">Riproduci video</span>
+      </button>`;
+    btn = container.querySelector('.video__facade-btn');
+  } else if (!btn.querySelector('img')) {
+    const img = document.createElement('img');
+    img.src = `https://i.ytimg.com/vi/${safeId}/hqdefault.jpg`;
+    img.alt = '';
+    img.loading = 'lazy';
+    btn.prepend(img);
+  }
+
+  if (!btn || btn.dataset.bound === '1') return;
+  btn.dataset.bound = '1';
+  btn.addEventListener('click', () => {
     mountYouTubeIframe(container, safeId, { autoplay: true, title });
   }, { once: true });
 }
 
-document.querySelectorAll('.video__player[data-video]').forEach(player => {
-  mountVideoFacade(player, player.dataset.video, {
-    title: player.dataset.title || ''
-  });
-});
+document.querySelectorAll('.video__player[data-video]').forEach(bindVideoPlayer);
 
 /* Spotify embed — caricato solo al clic (compatibile Brave Shield) */
 function sanitizeSpotifyId(id) {
@@ -247,21 +213,16 @@ function sanitizeSpotifyId(id) {
   return match ? match[0] : null;
 }
 
-function mountSpotifyFacade(container, albumId, { title = '' } = {}) {
-  const safeId = sanitizeSpotifyId(albumId);
+function bindSpotifyPlayer(container) {
+  const safeId = sanitizeSpotifyId(container?.dataset?.spotify);
   if (!container || !safeId) return;
 
-  const safeTitle = escapeHtml(title || 'Carica player Spotify');
+  const title = container.dataset.spotifyTitle || '';
+  const btn = container.querySelector('.spotify__facade-btn');
+  if (!btn || btn.dataset.bound === '1') return;
 
-  container.innerHTML = `
-    <button type="button" class="spotify__facade-btn" aria-label="${safeTitle}">
-      <span class="spotify__facade-play" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-      </span>
-      <span class="spotify__facade-label">Ascolta su Spotify</span>
-    </button>`;
-
-  container.querySelector('.spotify__facade-btn').addEventListener('click', () => {
+  btn.dataset.bound = '1';
+  btn.addEventListener('click', () => {
     const iframe = document.createElement('iframe');
     iframe.src = `https://open.spotify.com/embed/album/${safeId}?utm_source=generator&theme=0`;
     iframe.title = title || 'Jazz Landscapes su Spotify';
@@ -277,11 +238,7 @@ function mountSpotifyFacade(container, albumId, { title = '' } = {}) {
   }, { once: true });
 }
 
-document.querySelectorAll('.album__player[data-spotify]').forEach(player => {
-  mountSpotifyFacade(player, player.dataset.spotify, {
-    title: player.dataset.spotifyTitle || ''
-  });
-});
+document.querySelectorAll('.album__player[data-spotify]').forEach(bindSpotifyPlayer);
 
 /* Concerts — split upcoming / past */
 const concertsPast = document.getElementById('concerts-past');

@@ -54,10 +54,6 @@
   <link rel="icon" href="assets/logo-brand.jpg" type="image/jpeg">
   <link rel="apple-touch-icon" href="assets/logo-brand.jpg">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preload" as="image" href="assets/gallery/quartetto-promo-outdoor.jpg" fetchpriority="high">
 </head>
@@ -261,11 +257,14 @@
 
       <div class="container album__player-wrap reveal">
         <h3 class="album__player-title">Ascolta in anteprima</h3>
-        <div
-          class="album__player"
-          data-spotify="5r6zYVWxDqFrTzCkR0VwnN"
-          data-spotify-title="Jazz Landscapes — Sunrise String Jazz Quartet su Spotify"
-        ></div>
+        <div class="album__player" data-spotify="5r6zYVWxDqFrTzCkR0VwnN" data-spotify-title="Jazz Landscapes — Sunrise String Jazz Quartet su Spotify">
+          <button type="button" class="spotify__facade-btn" aria-label="Carica player Spotify Jazz Landscapes">
+            <span class="spotify__facade-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span class="spotify__facade-label">Ascolta su Spotify</span>
+          </button>
+        </div>
       </div>
 
       <div class="tracklist container reveal">
@@ -290,7 +289,14 @@
         <p class="section__intro">Video ufficiali e live dal canale YouTube: ascolta il suono del quartetto prima del concerto.</p>
 
         <div class="video__featured reveal">
-          <div class="video__player" data-video="GnKa-6p5Xq0" data-title="Melodia Infinita — Sunrise String Jazz Quartet (Official Video)"></div>
+          <div class="video__player" data-video="GnKa-6p5Xq0" data-title="Melodia Infinita — Sunrise String Jazz Quartet (Official Video)">
+            <button type="button" class="video__facade-btn" aria-label="Riproduci Melodia Infinita">
+              <span class="video__facade-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+              <span class="video__facade-label">Riproduci video</span>
+            </button>
+          </div>
           <div class="video__featured-info">
             <h3>Melodia Infinita</h3>
             <p>Video ufficiale tratto dall'album <em>Jazz Landscapes</em>. Composizione di Pino Jodice, girato al Palazzo Cigola Martinoni a Cigole (BS).</p>
@@ -302,7 +308,14 @@
           <h3 class="video__more-title">Altri video</h3>
           <div class="video__grid">
             <article class="video-card">
-              <div class="video__player" data-video="kzEuSb2AV80" data-title="Live @ Lerici — Jazz Landscapes"></div>
+              <div class="video__player" data-video="kzEuSb2AV80" data-title="Live @ Lerici — Jazz Landscapes">
+                <button type="button" class="video__facade-btn" aria-label="Riproduci live Lerici">
+                  <span class="video__facade-play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  </span>
+                  <span class="video__facade-label">Riproduci video</span>
+                </button>
+              </div>
               <div class="video-card__info">
                 <h4>Live @ Lerici (08/08/2025)</h4>
                 <a href="https://www.youtube.com/watch?v=kzEuSb2AV80" class="video-card__link" target="_blank" rel="noopener noreferrer">YouTube</a>

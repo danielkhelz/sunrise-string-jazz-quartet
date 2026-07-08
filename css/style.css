@@ -18,8 +18,8 @@
   --shadow-md: 0 8px 32px rgba(13, 13, 13, 0.12);
   --shadow-lg: 0 20px 60px rgba(13, 13, 13, 0.18);
   --shadow-glow: 0 24px 64px rgba(196, 30, 58, 0.25);
-  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
-  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --container-max: 1140px;
   --gutter: clamp(1rem, 4vw, 3rem);
   --section-pad: clamp(4rem, 8vw, 7.5rem);
@@ -53,26 +53,7 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-.reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html.js-ready .reveal:not(.reveal--visible) {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-}
-
-.reveal {
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.reveal--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Nessuna animazione che nasconde contenuto — compatibilità Brave */
 
 body.menu-open {
   overflow: hidden;
@@ -460,8 +441,7 @@ section[id] {
 .hero__bg-media {
   position: absolute;
   inset: 0;
-  pointer-events: auto;
-  cursor: default;
+  pointer-events: none;
   outline: none;
 }
 
@@ -1388,13 +1368,19 @@ section[id] {
 .video__facade-btn {
   position: absolute;
   inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
   width: 100%;
   height: 100%;
   padding: 0;
   border: none;
-  background: var(--black);
+  background: linear-gradient(135deg, #141414 0%, #2a1020 100%);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .video__facade-btn img {
@@ -1410,11 +1396,14 @@ section[id] {
   transform: scale(1.03);
 }
 
-.video__facade-play {
+.video__facade-btn:has(img) .video__facade-play {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.video__facade-play {
   width: 64px;
   height: 64px;
   display: flex;
@@ -1433,11 +1422,14 @@ section[id] {
   margin-left: 4px;
 }
 
-.video__facade-label {
+.video__facade-btn:has(img) .video__facade-label {
   position: absolute;
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.video__facade-label {
   padding: 0.45rem 0.85rem;
   font-size: 0.68rem;
   font-weight: 700;
