@@ -446,7 +446,8 @@ section[id] {
 .hero__bg-media {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: default;
   outline: none;
 }
 
@@ -668,13 +669,31 @@ section[id] {
   pointer-events: none;
   background: rgba(13, 13, 13, 0.72);
   border-radius: 2px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.hero__bg-media:hover .hero__photo-credit,
+.hero__bg-media:focus-visible .hero__photo-credit,
+.hero__bg-media:focus-within .hero__photo-credit {
   opacity: 1;
   visibility: visible;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hero__bg-media:active .hero__photo-credit,
+  .hero__bg-media:focus .hero__photo-credit {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero__photo-credit {
     transition: none;
+    opacity: 1;
+    visibility: visible;
   }
 }
 
