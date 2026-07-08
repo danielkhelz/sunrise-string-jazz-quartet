@@ -26,6 +26,29 @@ function setMenuOpen(open) {
   menu.classList.toggle('nav__menu--open', open);
   document.body.classList.toggle('menu-open', open);
   document.body.style.overflow = open ? 'hidden' : '';
+
+  if (open) {
+    const firstLink = menu.querySelector('a');
+    requestAnimationFrame(() => firstLink?.focus());
+  } else {
+    toggle.focus();
+  }
+}
+
+function trapMenuFocus(e) {
+  if (!menu?.classList.contains('nav__menu--open') || e.key !== 'Tab') return;
+  const focusable = [...menu.querySelectorAll('a')];
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 }
 
 if (toggle && menu) {
@@ -44,6 +67,7 @@ if (toggle && menu) {
     if (e.key === 'Escape' && menu.classList.contains('nav__menu--open')) {
       setMenuOpen(false);
     }
+    trapMenuFocus(e);
   });
 
   document.addEventListener('click', e => {

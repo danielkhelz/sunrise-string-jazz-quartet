@@ -69,7 +69,22 @@ body.menu-open {
   overscroll-behavior: none;
 }
 
-img { max-width: 100%; height: auto; display: block; }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+img[loading="lazy"] {
+  background-color: var(--bg);
+}
+
+.about__img,
+.album__cover,
+.concert-spotlight__img,
+.hero__photo {
+  background-color: var(--bg-elevated);
+}
 
 a { color: inherit; text-decoration: none; }
 
@@ -594,27 +609,6 @@ section[id] {
   aspect-ratio: 5 / 4;
 }
 
-.hero__trust {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem 0.75rem;
-  list-style: none;
-  margin-top: 1.25rem;
-  animation: fadeUp 0.8s 0.55s ease both;
-}
-
-.hero__trust li {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  padding: 0.4rem 0.7rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-}
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
@@ -653,6 +647,7 @@ section[id] {
   font-weight: 600;
   color: var(--white);
   line-height: 1.25;
+  overflow-wrap: break-word;
 }
 
 .hero__upcoming-label {
@@ -662,6 +657,7 @@ section[id] {
   text-transform: none;
   color: rgba(255, 255, 255, 0.68);
   line-height: 1.5;
+  overflow-wrap: break-word;
 }
 
 /* About */
@@ -1381,8 +1377,13 @@ section[id] {
 
 .concert-card:hover {
   border-left-color: var(--accent);
-  transform: translateX(4px);
   box-shadow: var(--shadow-md);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .concert-card:hover {
+    transform: translateX(4px);
+  }
 }
 
 .concert-card--upcoming {
@@ -1629,6 +1630,7 @@ section[id] {
   display: flex;
   align-items: center;
   gap: 1rem;
+  min-height: 64px;
   padding: 1.15rem 1.35rem;
   background: var(--white);
   border: 1px solid var(--border);
@@ -1681,6 +1683,15 @@ section[id] {
   color: var(--text-light);
   white-space: nowrap;
   transition: color var(--transition);
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .platform-card__action {
+    white-space: normal;
+    text-align: right;
+    max-width: 5.5rem;
+  }
 }
 
 .platform-card__action span {
@@ -2135,6 +2146,11 @@ section[id] {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
+  }
+
+  body.menu-open .hero,
+  body.menu-open main {
+    pointer-events: none;
   }
 
   .nav__menu li a {
@@ -2709,7 +2725,7 @@ section[id] {
 
   .hero__cta {
     justify-content: flex-start;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
   }
@@ -2732,7 +2748,6 @@ section[id] {
     max-width: min(120px, 28vw);
   }
 
-  .hero__trust { display: none; }
   .hero__wave { display: none; }
 }
 

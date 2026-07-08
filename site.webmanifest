@@ -1,0 +1,18 @@
+{
+  "name": "Sunrise String Jazz Quartet",
+  "short_name": "Sunrise Jazz",
+  "description": "Quartetto d'archi jazz — concerti live, album Jazz Landscapes e Jazz for Peace.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#0d0d0d",
+  "lang": "it",
+  "icons": [
+    {
+      "src": "assets/logo-brand.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
